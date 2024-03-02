@@ -10,6 +10,9 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { FiMenu } from "@/assets/icons";
+import styles from "./navbar.module.css";
+import Image from "next/image";
+import Logo from "@/assets/Ar.png";
 
 type NavItemProps = {
   text: string;
@@ -22,9 +25,10 @@ const NavItem: React.FC<NavItemProps> = ({ text, href, active, onClick }) => {
   return (
     <li
       onClick={onClick}
-      className={`font-medium text-lg ${
+      className={`font-medium text-lg hover:text-[#D8005B] md:before:w-full ${
         active && "decoration-slice"
-      } hover:opacity-70`}
+      }`}
+      id={styles.links}
     >
       <Link href={href}>{text}</Link>
     </li>
@@ -56,11 +60,20 @@ const Navbar: React.FC = () => {
 
   return (
     <motion.header
-      variants={{ hidden: { y: "-100%" }, visible: { y: 0 } }}
+      variants={{
+        hidden: { y: "-100%" },
+        visible: {
+          y: 0,
+          transition: {
+            delay: 0.4,
+          },
+        },
+      }}
+      initial="hidden"
       animate={hidden ? "hidden" : "visible"}
       className="flex justify-between items-center p-5 md:px-20 md:py-6 sticky top-0 bg-background shadow-lg"
     >
-      <h1 className="text-3xl md:text-4xl font-bold">&lt;AR/&gt;</h1>
+      <Image src={Logo} alt="Logo" className="w-16 sm:w-20 md:w-24" />
       <nav className="flex justify-center items-center gap-6">
         <ul className="hidden md:flex justify-center items-center gap-6">
           {MENU_LIST.map((item, index) => {
@@ -76,7 +89,10 @@ const Navbar: React.FC = () => {
           })}
         </ul>
         <ThemeToggler />
-        <div className="hidden before:contents sm:flex flex-row relative before:rounded-full after:rounded-full before:bg-black after:bg-foreground before:bg-foreground before:w-[35px] after:w-[35px] before:h-[35px] after:h-[35px] before:absolute before:left-0">
+        <div
+          className="hidden sm:flex flex-row relative before:rounded-full after:rounded-full before:bg-black after:bg-foreground before:bg-foreground before:w-[35px] after:w-[35px] before:h-[35px] after:h-[35px] before:absolute before:left-0"
+          id={styles.btnDiv}
+        >
           <Button className="relative hover:translate-x-[35px] transition-all duration-300 hover:bg-primary/900">
             Download CV
           </Button>

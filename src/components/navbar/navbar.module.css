@@ -1,0 +1,42 @@
+#links {
+  position: relative;
+}
+
+#links::before {
+  content: "";
+  position: absolute;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #d8005b;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+#links:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+#btnDiv::before,
+#btnDiv::after {
+  background-image: var(--btnArrow);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.5s;
+}
+
+#btnDiv:hover::after,
+#btnDiv:hover::before {
+  transform: rotate(45deg);
+}
+
+#btnDiv::before {
+  transform: rotateZ(135deg);
+}
+
+#btnDiv::after {
+  transform: rotateZ(135deg);
+  z-index: -1;
+}
