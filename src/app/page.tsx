@@ -45,13 +45,14 @@ export default function Home() {
         variants={Variants}
         initial="hidden"
         whileInView="visible"
-        className="bg p-2 sm:px-4 md:px-8 lg:px-14 md:flex-row flex flex-col-reverse justify-center items-center"
+        className="bg p-2 py-16 sm:px-4 md:px-8 lg:px-14 md:flex-row flex flex-col-reverse justify-center items-center"
       >
         <section className="md:w-[50%]">
           <span className="font-semibold sm:font-bold text-3xl md:text-4xl">
             <span>Hi, I&apos;m </span>
             <TypeingAnimation />
           </span>
+          <hr className="my-4" />
           <p className="text-muted-foreground mt-5 text-justify">
             I&apos;m a full stack developer (React.js & Node.js) with a focus on
             creating (and occasionally designing) exceptional digital
@@ -70,6 +71,7 @@ export default function Home() {
               </p>
             </span>
           </div>
+          <hr className="my-4" />
           <div className="flex justify-start items-center gap-5 mt-5">
             <HoverCard>
               <HoverCardTrigger>
