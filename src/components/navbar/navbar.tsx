@@ -62,65 +62,69 @@ const Navbar: React.FC = () => {
     <motion.header
       variants={{
         hidden: { y: "-100%" },
-        visible: {
-          y: 0,
-          transition: {
-            delay: 0.4,
-          },
-        },
+        visible: { y: 0 },
       }}
       initial="hidden"
       animate={hidden ? "hidden" : "visible"}
-      className="flex justify-between items-center p-5 md:px-20 md:py-6 sticky top-0 bg-background shadow-lg"
+      className="bg-background shadow-lg sticky top-0 flex justify-center items-center"
     >
-      <Image src={Logo} alt="Logo" className="w-16 sm:w-20 md:w-24" />
-      <nav className="flex justify-center items-center gap-6">
-        <ul className="hidden md:flex justify-center items-center gap-6">
-          {MENU_LIST.map((item, index) => {
-            return (
-              <NavItem
-                key={index}
-                href={item.href}
-                text={item.text}
-                active={index === isActive}
-                onClick={() => setActive(index)}
-              />
-            );
-          })}
-        </ul>
-        <ThemeToggler />
-        <div
-          className="hidden sm:flex flex-row relative before:rounded-full after:rounded-full before:bg-black after:bg-foreground before:bg-foreground before:w-[35px] after:w-[35px] before:h-[35px] after:h-[35px] before:absolute before:left-0"
-          id={styles.btnDiv}
-        >
-          <Button className="relative hover:translate-x-[35px] transition-all duration-300 hover:bg-primary/900">
-            Download CV
-          </Button>
-        </div>
-        <span className="block md:hidden">
-          <Popover>
-            <PopoverTrigger onClick={() => setOpen(!isOpen)}>
-              <FiMenu size={26} />
-            </PopoverTrigger>
-            <PopoverContent className="md:hidden flex flex-col justify-center gap-3">
-              <ul className="flex flex-col justify-center gap-1">
-                {MENU_LIST.map((item, index) => {
-                  return (
-                    <NavItem
-                      key={index}
-                      href={item.href}
-                      text={item.text}
-                      active={index === isActive}
-                      onClick={() => setActive(index)}
-                    />
-                  );
-                })}
-              </ul>
-              <Button className="sm:hidden">Download CV</Button>
-            </PopoverContent>
-          </Popover>
-        </span>
-      </nav>
+      <div className="p-2 sm:px-4 md:px-8 lg:px-14 flex justify-between items-center py-6 max-w-[1350px] w-full">
+        <Image
+          src={Logo}
+          alt="Logo"
+          width={200}
+          height={100}
+          priority
+          className="w-16 sm:w-20 md:w-24"
+        />
+        <nav className="flex justify-center items-center gap-6">
+          <ul className="hidden md:flex justify-center items-center gap-6">
+            {MENU_LIST.map((item, index) => {
+              return (
+                <NavItem
+                  key={index}
+                  href={item.href}
+                  text={item.text}
+                  active={index === isActive}
+                  onClick={() => setActive(index)}
+                />
+              );
+            })}
+          </ul>
+          <ThemeToggler />
+          <div
+            className="hidden sm:flex flex-row relative before:rounded-full after:rounded-full before:bg-black after:bg-foreground before:bg-foreground before:w-[35px] after:w-[35px] before:h-[35px] after:h-[35px] before:absolute before:left-0"
+            id={styles.btnDiv}
+          >
+            <Button className="relative hover:translate-x-[35px] transition-all duration-300 hover:bg-primary/900">
+              Download CV
+            </Button>
+          </div>
+          <span className="block md:hidden">
+            <Popover>
+              <PopoverTrigger onClick={() => setOpen(!isOpen)}>
+                <FiMenu size={26} />
+              </PopoverTrigger>
+              <PopoverContent className="md:hidden flex flex-col justify-center gap-3">
+                <ul className="flex flex-col justify-center gap-1">
+                  {MENU_LIST.map((item, index) => {
+                    return (
+                      <NavItem
+                        key={index}
+                        href={item.href}
+                        text={item.text}
+                        active={index === isActive}
+                        onClick={() => setActive(index)}
+                      />
+                    );
+                  })}
+                </ul>
+                <Button className="sm:hidden">Download CV</Button>
+              </PopoverContent>
+            </Popover>
+          </span>
+        </nav>
+      </div>
     </motion.header>
   );
 };
