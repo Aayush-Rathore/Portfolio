@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
       }}
       initial="hidden"
       animate={hidden ? "hidden" : "visible"}
-      className="bg-background shadow-lg sticky top-0 flex justify-center items-center"
+      className="bg-background shadow-lg sticky top-0 flex justify-center items-center z-10"
     >
       <div className="p-2 sm:px-4 md:px-8 lg:px-14 flex justify-between items-center py-6 max-w-[1350px] w-full">
         <Image
@@ -96,7 +96,10 @@ const Navbar: React.FC = () => {
             className="hidden sm:flex flex-row relative before:rounded-full after:rounded-full before:bg-black after:bg-foreground before:bg-foreground before:w-[35px] after:w-[35px] before:h-[35px] after:h-[35px] before:absolute before:left-0"
             id={styles.btnDiv}
           >
-            <Button className="relative hover:translate-x-[35px] transition-all duration-300 hover:bg-primary/900">
+            <Button
+              id={styles.btn}
+              className="relative transition-all duration-300 hover:bg-primary/900"
+            >
               Download CV
             </Button>
           </div>

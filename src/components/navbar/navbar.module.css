@@ -19,17 +19,16 @@
   transform-origin: bottom left;
 }
 
+#btnDiv:hover > #btn {
+  transform: translateX(35px);
+}
+
 #btnDiv::before,
 #btnDiv::after {
   background-image: var(--btnArrow);
   background-repeat: no-repeat;
   background-position: center;
   transition: all 0.5s;
-}
-
-#btnDiv:hover::after,
-#btnDiv:hover::before {
-  transform: rotate(45deg);
 }
 
 #btnDiv::before {
