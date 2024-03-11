@@ -50,10 +50,8 @@ const Navbar: React.FC = () => {
   useMotionValueEvent(scrollY, "change", (value) => {
     const previous: any = scrollY.getPrevious();
     if (value > previous) {
-      console.log(hidden);
       setHidden(true);
     } else {
-      console.log(hidden);
       setHidden(false);
     }
   });

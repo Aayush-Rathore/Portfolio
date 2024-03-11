@@ -1,5 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
+"use client";
+import React, { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { Separator } from "@/components/ui/separator";
 import {
   FaReact,
@@ -15,6 +16,7 @@ import {
   TbBrandVscode,
 } from "@/assets/icons";
 import { TypeAnimation } from "react-type-animation";
+import SkillsCard from "./swiper";
 import TiltCard from "./tiltCard";
 
 const skills = [
@@ -36,6 +38,9 @@ const SkillsSection: React.FC = () => {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
   };
+
+  const ref = useRef(null);
+  const isInView = useInView(ref);
 
   const TypeingAnimation = ({
     sequence,
@@ -71,20 +76,13 @@ const SkillsSection: React.FC = () => {
         />
         <Separator className="my-4" />
         <motion.div
-          className="w-full flex gap-5 md:gap-10 flex-wrap justify-center items-center my-10"
+          className="w-full flex gap-5 md:gap-10 md:flex-wrap justify-center items-center my-10"
           variants={Variants}
-          whileInView="visible"
-          transition={{ delay: 0.2 }}
+          initial="hidden"
+          whileInView={isInView ? "hidden" : "visible"}
+          transition={{ delay: 0.8 }}
         >
-          {skills.map((skill, index) => (
-            <TiltCard key={index}>
-              <div className="hover:text-[#ec619b] flex gap-5 flex-col justify-center items-center transition-all duration-200">
-                {skill.icon}
-
-                <p className="font-bold">{skill.label}</p>
-              </div>
-            </TiltCard>
-          ))}
+          <SkillsCard />
         </motion.div>
       </div>
     </motion.div>

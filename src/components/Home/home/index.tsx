@@ -62,7 +62,7 @@ const HomeSection: React.FC = () => {
           </p>
           <div className="flex flex-col gap-2 mt-3">
             <span className="flex flex-row gap-3">
-              <HiOutlineLocationMarker size={25} />
+              <HiOutlineLocationMarker size={25}/>
               <p className="text-muted-foreground">Madhya Pradesh, India</p>
             </span>
             <span className="flex flex-row gap-3">

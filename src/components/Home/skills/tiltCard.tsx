@@ -6,9 +6,13 @@ const HALF_ROTATION_RANGE = 32.5 / 2;
 
 type TiltCardProps = {
   children: JSX.Element | JSX.Element[];
+  className: string;
 };
 
-const TiltCard: React.FC<TiltCardProps> = ({ children }: TiltCardProps) => {
+const TiltCard: React.FC<TiltCardProps> = ({
+  children,
+  className,
+}: TiltCardProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   const [rotateX, setRotateX] = useState(0);
@@ -50,7 +54,7 @@ const TiltCard: React.FC<TiltCardProps> = ({ children }: TiltCardProps) => {
         rotateX,
         rotateY,
       }}
-      className="relative h-52 w-40 rounded-xl bg-gradient-to-br bg-secondary to-violet-300"
+      className={`relative h-52 w-40 rounded-xl bg-gradient-to-br bg-secondary to-violet-300 ${className}`}
     >
       <div
         style={{
